@@ -1,0 +1,39 @@
+{
+    "name": "thena",
+    "version": "0.0.1",
+    "description": "A simple, lightweight, and fast utility library for Node and the browser.",
+    "type": "module",
+    "author": "TheCommieAxolotl",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "test": "node ./test/index.test.js"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./node": "./dist/node.js"
+    },
+    "keywords": [
+        "thena",
+        "util",
+        "utility",
+        "node",
+        "browser",
+        "typescript"
+    ],
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^13.0.6",
+        "@rollup/plugin-typescript": "^8.2.1",
+        "@types/node": "^18.15.5",
+        "rollup": "^2.56.3",
+        "tslib": "^2.3.0",
+        "typescript": "^4.3.5"
+    },
+    "files": [
+        "README.md",
+        "LICENSE",
+        "dist"
+    ]
+}
