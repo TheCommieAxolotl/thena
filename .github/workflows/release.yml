@@ -3,19 +3,20 @@ name: npm Package
 on:
     release:
         types: [created]
+    workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 7
             - uses: actions/setup-node@v3
               with:
                   node-version: 16
                   cache: 'pnpm'
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 7
             - run: pnpm install
             - run: pnpm build
 
@@ -27,14 +28,14 @@ jobs:
             contents: read
         steps:
             - uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 7
             - uses: actions/setup-node@v3
               with:
                   node-version: 16
                   registry-url: https://npm.pkg.github.com/
                   cache: 'pnpm'
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 7
             - run: pnpm install
             - run: pnpm build
             - run: npm publish
