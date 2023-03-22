@@ -1,5 +1,5 @@
 /**
- * thena@0.0.2
+ * thena@0.0.3
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 
