@@ -34,6 +34,7 @@ pkj.dependencies.thena = '^1.0.0';
 - `each` - Iterates over an array or object and calls a function for each item.
 - `loop` - Loops a function a specified number of times.
 - `num` - Converts strings, arrays, and objects to numbers.
+- `fetch` - Fetches a URL and returns a re-consumable response.
 
 ### `thena/node`
 *everything from `thena`*
