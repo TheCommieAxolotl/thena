@@ -40,6 +40,7 @@ export default defineConfig([
         output: {
             file: 'dist/index.cjs',
             format: 'cjs',
+            exports: 'named',
         },
     },
     {
@@ -50,6 +51,7 @@ export default defineConfig([
         output: {
             file: 'dist/node.cjs',
             format: 'cjs',
+            exports: 'named',
         },
     },
 ]);
