@@ -13,7 +13,7 @@
         "test": "node ./test/index.test.js"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "@TheCommieAxolotl:registry": "https://npm.pkg.github.com"
     },
     "exports": {
         ".": "./dist/index.js",
