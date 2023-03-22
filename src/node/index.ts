@@ -1,5 +1,5 @@
 /**
- * thena/node@0.0.1
+ * thena/node@0.0.2
  * A simple, lightweight, and fast utility library for Node
  */
 
