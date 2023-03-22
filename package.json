@@ -12,6 +12,9 @@
         "dev": "rollup -c -w",
         "test": "node ./test/index.test.js"
     },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "exports": {
         ".": "./dist/index.js",
         "./node": "./dist/node.js"
