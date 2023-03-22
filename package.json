@@ -15,6 +15,11 @@
         ".": "./dist/index.js",
         "./node": "./dist/node.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TheCommieAxolotl/thena.git"
+    },
+    "homepage": "https://github.com/TheCommieAxolotl/thena#readme",
     "keywords": [
         "thena",
         "util",
