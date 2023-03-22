@@ -1,7 +1,43 @@
-import fs from 'node:fs';
+import fs$1 from 'node:fs';
+
+const isNode = () => {
+    return typeof window.process?.versions !== 'undefined';
+};
+
+const fetch = async (url, options = {}) => {
+    if (isNode()) {
+        throw new Error('fetch is only supported in a browser environment');
+    }
+    const response = await window.fetch(url, {
+        method: options.method || 'GET',
+        headers: options.headers || {},
+        body: options.body || null,
+    });
+    const body = await response.text();
+    return {
+        bodyUsed: response.bodyUsed,
+        headers: response.headers,
+        ok: response.ok,
+        redirected: response.redirected,
+        status: response.status,
+        statusText: response.statusText,
+        type: response.type,
+        url: response.url,
+        body: {
+            text: () => body,
+            json: () => JSON.parse(body),
+            html: () => new DOMParser().parseFromString(body, 'text/html'),
+        },
+    };
+};
+
+var http = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    fetch: fetch
+});
 
 /**
- * thena@0.0.1
+ * thena@0.0.2
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 const loop = (n, fn) => {
@@ -49,6 +85,21 @@ const num = (n) => {
             return 0;
     }
 };
+var index$1 = {
+    loop,
+    each,
+    num,
+    ...http,
+};
+
+var browser = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    loop: loop,
+    each: each,
+    num: num,
+    'default': index$1,
+    fetch: fetch
+});
 
 class FileError extends Error {
     cause;
@@ -61,9 +112,9 @@ class FileError extends Error {
 const fileCache = new Map();
 const json = (file, encoding = 'utf8') => {
     try {
-        if (!fs.existsSync(file))
+        if (!fs$1.existsSync(file))
             return {};
-        return JSON.parse(fs.readFileSync(file, encoding));
+        return JSON.parse(fs$1.readFileSync(file, encoding));
     }
     catch (e) {
         throw new FileError(`Could not read file: ${file}`, e);
@@ -75,7 +126,7 @@ const set = (file, key, value, encoding = 'utf8') => {
         data[String(key)] = value;
         if (value === null)
             delete data[String(key)];
-        fs.writeFileSync(file, JSON.stringify(data, null, 4), encoding);
+        fs$1.writeFileSync(file, JSON.stringify(data, null, 4), encoding);
     }
     catch (e) {
         throw new FileError(`Could not write to file: ${file}`, e);
@@ -111,17 +162,20 @@ const stream = (file, encoding = 'utf8') => {
     });
 };
 
+var fs = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    json: json,
+    set: set,
+    stream: stream
+});
+
 /**
- * thena/node@0.0.1
+ * thena/node@0.0.2
  * A simple, lightweight, and fast utility library for Node
  */
 var index = {
-    loop,
-    each,
-    num,
-    json,
-    set,
-    stream,
+    ...browser,
+    ...fs,
 };
 
-export { index as default, each, json, loop, num, set, stream };
+export { index as default, each, fetch, json, loop, num, set, stream };

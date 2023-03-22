@@ -3,17 +3,13 @@
  * A simple, lightweight, and fast utility library for Node
  */
 
-import { loop, each, num } from '../browser';
-import { json, set, stream } from './fs';
+import * as browser from '../browser';
+import * as fs from './fs';
 
 export * from '../browser';
 export * from './fs';
 
 export default {
-    loop,
-    each,
-    num,
-    json,
-    set,
-    stream,
+    ...browser,
+    ...fs,
 };

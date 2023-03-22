@@ -3,6 +3,10 @@
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 
+import * as http from './http';
+
+export * from './http';
+
 export const loop = (n: number, fn: (i: number) => void): Promise<void> => {
     return new Promise((resolve) => {
         for (let i = 0; i < n; i++) {
@@ -59,4 +63,5 @@ export default {
     loop,
     each,
     num,
+    ...http,
 };
