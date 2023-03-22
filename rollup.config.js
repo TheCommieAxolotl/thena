@@ -3,31 +3,53 @@ import { defineConfig } from 'rollup';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
+const baseConfig = defineConfig({
+    input: 'src/browser/index.ts',
+    output: {
+        file: 'dist/index.js',
+        format: 'esm',
+    },
+    plugins: [
+        nodeResolve({
+            exportConditions: ['node'],
+        }),
+        typescript(),
+    ],
+});
+
+const nodeConfig = defineConfig({
+    input: 'src/node/index.ts',
+    output: {
+        file: 'dist/node.js',
+        format: 'esm',
+    },
+    plugins: [
+        nodeResolve({
+            exportConditions: ['node'],
+        }),
+        typescript(),
+    ],
+});
+
 export default defineConfig([
     {
-        input: 'src/browser/index.ts',
-        output: {
-            file: 'dist/index.js',
-            format: 'esm',
-        },
-        plugins: [
-            nodeResolve({
-                exportConditions: ['node'],
-            }),
-            typescript(),
-        ],
+        ...baseConfig,
     },
     {
-        input: 'src/node/index.ts',
+        ...baseConfig,
         output: {
-            file: 'dist/node.js',
-            format: 'esm',
+            file: 'dist/index.cjs',
+            format: 'cjs',
         },
-        plugins: [
-            nodeResolve({
-                exportConditions: ['node'],
-            }),
-            typescript(),
-        ],
+    },
+    {
+        ...nodeConfig,
+    },
+    {
+        ...nodeConfig,
+        output: {
+            file: 'dist/node.cjs',
+            format: 'cjs',
+        },
     },
 ]);
