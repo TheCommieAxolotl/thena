@@ -39,7 +39,7 @@ var http = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena@0.0.5
+ * thena@0.0.6
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 const loop = (n, fn) => {
