@@ -41,5 +41,5 @@ pkj.dependencies.thena = '^1.0.0';
 
 - `json` - Reads and parses a JSON file.
 - `set` - Sets a value in a JSON file.
-- `stream` - Read a JSON file and return a proxy that can be used to read and write to the file
-
+- `stream` - Read a JSON file and return a proxy that can be used to read and write to the file.
+- `log` - Effortlessly colour and style your console logs.

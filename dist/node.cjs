@@ -45,7 +45,7 @@ var http = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena@0.0.4
+ * thena@0.0.5
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 const loop = (n, fn) => {
@@ -107,6 +107,53 @@ var browser = /*#__PURE__*/Object.freeze({
     num: num,
     'default': index$1,
     fetch: fetch
+});
+
+exports.ASCII = void 0;
+(function (ASCII) {
+    ASCII["reset"] = "\u001B[0m";
+    ASCII["bold"] = "\u001B[1m";
+    ASCII["dim"] = "\u001B[2m";
+    ASCII["underscore"] = "\u001B[4m";
+    ASCII["blink"] = "\u001B[5m";
+    ASCII["reverse"] = "\u001B[7m";
+    ASCII["hidden"] = "\u001B[8m";
+    ASCII["black"] = "\u001B[30m";
+    ASCII["red"] = "\u001B[31m";
+    ASCII["green"] = "\u001B[32m";
+    ASCII["yellow"] = "\u001B[33m";
+    ASCII["blue"] = "\u001B[34m";
+    ASCII["magenta"] = "\u001B[35m";
+    ASCII["cyan"] = "\u001B[36m";
+    ASCII["white"] = "\u001B[37m";
+    ASCII["bg_black"] = "\u001B[40m";
+    ASCII["bg_red"] = "\u001B[41m";
+    ASCII["bg_grees"] = "\u001B[42m";
+    ASCII["bg_yellow"] = "\u001B[43m";
+    ASCII["bg_blue"] = "\u001B[44m";
+    ASCII["bg_magenta"] = "\u001B[45m";
+    ASCII["bg_cyan"] = "\u001B[46m";
+    ASCII["bg_white"] = "\u001B[47m";
+})(exports.ASCII || (exports.ASCII = {}));
+const log = (message, ...colors) => {
+    console.log(colors
+        .map((color) => {
+        if (color.toLowerCase() in exports.ASCII) {
+            return exports.ASCII[color.toLowerCase()];
+        }
+        else {
+            return color;
+        }
+    })
+        .join('') +
+        message +
+        exports.ASCII.reset);
+};
+
+var log$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    get ASCII () { return exports.ASCII; },
+    log: log
 });
 
 class FileError extends Error {
@@ -178,11 +225,12 @@ var fs = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena/node@0.0.4
+ * thena/node@0.0.5
  * A simple, lightweight, and fast utility library for Node
  */
 var index = {
     ...browser,
+    ...log$1,
     ...fs,
 };
 
@@ -190,6 +238,7 @@ exports["default"] = index;
 exports.each = each;
 exports.fetch = fetch;
 exports.json = json;
+exports.log = log;
 exports.loop = loop;
 exports.num = num;
 exports.set = set;
