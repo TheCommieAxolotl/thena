@@ -1,5 +1,5 @@
 # thena
-[![Open Bundle](https://bundlejs.com/badge-dark.svg)](https://bundlejs.com/?q=thena) [![Open Site](https://thenajs.vercel.app/public/badges/site.svg)](https://thenajs.vercel.app)
+[![Open Bundle](https://bundlejs.com/badge-dark.svg)](https://bundlejs.com/?q=thena) [![Open Site](https://thenajs.vercel.app/badges/site.svg)](https://thenajs.vercel.app)
 
 A simple, lightweight, and fast utility library for Node and the browser.
 
