@@ -10,7 +10,10 @@
     "scripts": {
         "build": "rollup -c",
         "dev": "rollup -c -w",
-        "test": "node ./test/index.test.js"
+        "test": "node ./test/index.test.js",
+        "docs:dev": "cd ./docs && vitepress dev",
+        "docs:build": "cd ./docs && vitepress build",
+        "docs:preview": "cd ./docs && vitepress preview"
     },
     "exports": {
         ".": {
@@ -41,7 +44,9 @@
         "@types/node": "^18.15.5",
         "rollup": "^2.56.3",
         "tslib": "^2.3.0",
-        "typescript": "^4.3.5"
+        "typescript": "^4.3.5",
+        "vitepress": "1.0.0-alpha.61",
+        "vue": "^3.2.47"
     },
     "files": [
         "README.md",

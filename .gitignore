@@ -3,3 +3,7 @@ node_modules
 
 # macos files
 .DS_Store
+
+# vitepress
+docs/**/cache
+docs/**/dist
