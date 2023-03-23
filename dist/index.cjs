@@ -80,8 +80,9 @@ const num = (n) => {
             return number;
         }
         case 'object':
-            if (n instanceof Array)
-                return n.length;
+            if (n instanceof Array) {
+                return n.reduce((acc, curr) => acc + num(curr), 0);
+            }
             return Object.keys(n).length;
         default:
             return 0;
