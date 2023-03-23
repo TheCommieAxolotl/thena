@@ -22,12 +22,18 @@ import thena from 'thena';
 
 Call a given function a given number of times.
 
+::: tip
+This method returns an `await`able promise that resolves when all iterations have been completed.
+:::
+
 ```ts
 import { loop } from 'thena';
 
-loop(20, () => {
+await loop(20, () => {
   console.log('Hello, World!');
 });
+
+// Hello, World! x 20
 ```
 
 #### `thena.each`
@@ -36,14 +42,18 @@ Call a given function for each item in an array-like object.
 
 ::: tip
 Any object which implements the `obj.length` property will work.
+
+This method returns an `await`able promise that resolves when all items have been iterated over.
 :::
 
 ```ts
 import { each } from 'thena';
 
-each([1, 2, 3, 4, 5], (item, index) => {
+await each([1, 2, 3, 4, 5], (item, index) => {
   console.log(`Hello, ${item}!`);
 });
+
+// Hello, 1, 2 ... 5!
 ```
 
 #### `thena.num`

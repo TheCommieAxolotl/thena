@@ -25,24 +25,22 @@ export default defineConfig({
                 items: [
                     { text: 'GitHub Release', link: 'https://github.com/TheCommieAxolotl/thena/releases/latest' },
                     {
-                        text: 'npm Version',
+                        text: 'View on npm',
                         link: 'https://www.npmjs.com/package/thena/v/latest',
                     },
                 ],
             },
         ],
-        sidebar: {
-            '/guide/': [
-                {
-                    text: 'Guide',
-                    // collapsed: false,
-                    items: [
-                        { text: 'Getting Started', link: '/guide/getting-started' },
-                        { text: 'API Reference', link: '/guide/api' },
-                    ],
-                },
-            ],
-        },
+        sidebar: [
+            {
+                text: 'Guide',
+                collapsed: false,
+                items: [
+                    { text: 'Getting Started', link: '/guide/getting-started' },
+                    { text: 'API Reference', link: '/guide/api' },
+                ],
+            },
+        ],
         socialLinks: [{ icon: 'github', link: 'https://github.com/TheCommieAxolotl/thena' }],
     },
 });
