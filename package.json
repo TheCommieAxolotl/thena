@@ -6,6 +6,7 @@
     "type": "module",
     "author": "TheCommieAxolotl",
     "main": "dist/index.js",
+    "funding": "https://github.com/TheCommieAxolotl/thena?sponsor=1",
     "license": "MIT",
     "scripts": {
         "build": "rollup -c",
@@ -29,7 +30,7 @@
         "type": "git",
         "url": "https://github.com/TheCommieAxolotl/thena.git"
     },
-    "homepage": "https://github.com/TheCommieAxolotl/thena#readme",
+    "homepage": "https://thenajs.vercel.app",
     "keywords": [
         "thena",
         "util",
