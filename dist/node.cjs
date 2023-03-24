@@ -217,12 +217,24 @@ const stream = (file, encoding = 'utf8') => {
         },
     });
 };
+const watch = (file, callback) => {
+    let macosTimeout = null;
+    fs__default["default"].watch(file, (eventType, filename) => {
+        if (macosTimeout)
+            return;
+        macosTimeout = setTimeout(() => {
+            macosTimeout = null;
+        }, 1000);
+        callback(filename, eventType);
+    });
+};
 
 var fs = /*#__PURE__*/Object.freeze({
     __proto__: null,
     json: json,
     set: set,
-    stream: stream
+    stream: stream,
+    watch: watch
 });
 
 /**
@@ -244,3 +256,4 @@ exports.loop = loop;
 exports.num = num;
 exports.set = set;
 exports.stream = stream;
+exports.watch = watch;

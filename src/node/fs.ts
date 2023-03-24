@@ -65,3 +65,17 @@ export const stream = (file: string, encoding: BufferEncoding = 'utf8') => {
         }
     );
 };
+
+export const watch = (file: string, callback: (file: string, eventType: any) => void) => {
+    let macosTimeout: NodeJS.Timeout | null = null;
+
+    fs.watch(file, (eventType, filename) => {
+        if (macosTimeout) return;
+
+        macosTimeout = setTimeout(() => {
+            macosTimeout = null;
+        }, 1000);
+
+        callback(filename, eventType);
+    });
+};

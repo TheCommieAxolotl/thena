@@ -51,6 +51,18 @@ export function stream(
     __filename: string;
 };
 
+/**
+ * watch
+ * @description watch a file for changes, with a few improvements
+ * @param file path to the file to watch
+ * @param callback callback to run when the file changes
+ * @example
+ * watch('file.json', (file, eventType) => {
+ *    console.log(`File ${file}: ${eventType}`); // File file.json: change
+ * });
+ */
+export function watch(file: string, callback: (file: string, eventType: any) => void): void;
+
 export interface ASCII {
     reset: '\x1b[0m';
     bold: '\x1b[1m';
