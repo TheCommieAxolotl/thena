@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var node_path = require('node:path');
 var fs$1 = require('node:fs');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -9,7 +10,12 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs$1);
 
 const isNode = () => {
-    return typeof window.process?.versions !== 'undefined';
+    try {
+        return typeof process.versions !== 'undefined';
+    }
+    catch (e) {
+        return true;
+    }
 };
 
 const fetch = async (url, options = {}) => {
@@ -241,15 +247,31 @@ var fs = /*#__PURE__*/Object.freeze({
  * thena/node@0.0.6
  * A simple, lightweight, and fast utility library for Node
  */
+const global = {
+    get node() {
+        return isNode();
+    },
+    get browser() {
+        return !isNode();
+    },
+    __dirname(meta) {
+        return new URL('.', meta.url).pathname;
+    },
+    __filename(meta) {
+        return node_path.basename(new URL(meta.url).pathname);
+    },
+};
 var index = {
     ...browser,
     ...log$1,
     ...fs,
+    global,
 };
 
 exports["default"] = index;
 exports.each = each;
 exports.fetch = fetch;
+exports.global = global;
 exports.json = json;
 exports.log = log;
 exports.loop = loop;

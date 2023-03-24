@@ -1,7 +1,13 @@
+import { basename } from 'node:path';
 import fs$1 from 'node:fs';
 
 const isNode = () => {
-    return typeof window.process?.versions !== 'undefined';
+    try {
+        return typeof process.versions !== 'undefined';
+    }
+    catch (e) {
+        return true;
+    }
 };
 
 const fetch = async (url, options = {}) => {
@@ -233,10 +239,25 @@ var fs = /*#__PURE__*/Object.freeze({
  * thena/node@0.0.6
  * A simple, lightweight, and fast utility library for Node
  */
+const global = {
+    get node() {
+        return isNode();
+    },
+    get browser() {
+        return !isNode();
+    },
+    __dirname(meta) {
+        return new URL('.', meta.url).pathname;
+    },
+    __filename(meta) {
+        return basename(new URL(meta.url).pathname);
+    },
+};
 var index = {
     ...browser,
     ...log$1,
     ...fs,
+    global,
 };
 
-export { ASCII, index as default, each, fetch, json, log, loop, num, set, stream, watch };
+export { ASCII, index as default, each, fetch, global, json, log, loop, num, set, stream, watch };

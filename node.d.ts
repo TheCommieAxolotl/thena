@@ -99,6 +99,41 @@ export interface ASCII {
  */
 export function log(message: any, ...colours: string[]): void;
 
+/**
+ * global
+ * @description global nodejs utilities
+ */
+export interface global {
+    /**
+     * __dirname
+     * @description get the directory name of the current file
+     * @param meta import.meta
+     * @returns the directory name of the current file
+     * @example
+     * __dirname(import.meta); // /home/user/project/src
+     */
+    __dirname: (meta: ImportMeta) => string;
+    /**
+     * __filename
+     * @description get the file name of the current file
+     * @param meta import.meta
+     * @returns the file name of the current file
+     * @example
+     * __filename(import.meta); // index.ts
+     */
+    __filename: (meta: ImportMeta) => string;
+    /**
+     * node
+     * @description whether or not the current environment is running in a nodejs process
+     */
+    get node(): boolean;
+    /**
+     * browser
+     * @description whether or not the current environment is running in a browser process
+     */
+    get browser(): boolean;
+}
+
 declare const _default: {
     json: typeof json;
     set: typeof set;
@@ -108,6 +143,7 @@ declare const _default: {
     num: typeof num;
     log: typeof log;
     ASCII: ASCII;
+    global: global;
 };
 
 export default _default;

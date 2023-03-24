@@ -3,7 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const isNode = () => {
-    return typeof window.process?.versions !== 'undefined';
+    try {
+        return typeof process.versions !== 'undefined';
+    }
+    catch (e) {
+        return true;
+    }
 };
 
 const fetch = async (url, options = {}) => {

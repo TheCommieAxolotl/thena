@@ -1,3 +1,7 @@
 export const isNode = () => {
-    return typeof window.process?.versions !== 'undefined';
+    try {
+        return typeof process.versions !== 'undefined';
+    } catch (e) {
+        return true;
+    }
 };
