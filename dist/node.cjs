@@ -51,7 +51,7 @@ var http = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena@0.0.7
+ * thena@0.0.8
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 const loop = (n, fn) => {
@@ -259,7 +259,7 @@ var fs = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena/node@0.0.7
+ * thena/node@0.0.8
  * A simple, lightweight, and fast utility library for Node
  */
 const global = {
