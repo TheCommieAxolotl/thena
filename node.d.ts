@@ -100,6 +100,16 @@ export interface ASCII {
 export function log(message: any, ...colours: string[]): void;
 
 /**
+ * color
+ * @description Effortlessly colour and style a string.
+ * @param message - the string to colour
+ * @param colours - the colours/styles to apply to the string
+ * @example
+ * color('Hello World', 'bold', 'red');
+ */
+export function color(message: any, ...colours: string[]): string;
+
+/**
  * global
  * @description global nodejs utilities
  */
@@ -142,6 +152,7 @@ declare const _default: {
     each: typeof each;
     num: typeof num;
     log: typeof log;
+    color: typeof color;
     ASCII: ASCII;
     global: global;
 };
