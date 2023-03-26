@@ -156,11 +156,26 @@ const log = (message, ...colors) => {
         message +
         exports.ASCII.reset);
 };
+const color = (message, ...colors) => {
+    return (colors
+        .map((color) => {
+        if (color.toLowerCase() in exports.ASCII) {
+            return exports.ASCII[color.toLowerCase()];
+        }
+        else {
+            return color;
+        }
+    })
+        .join('') +
+        message +
+        exports.ASCII.reset);
+};
 
 var log$1 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ASCII () { return exports.ASCII; },
-    log: log
+    log: log,
+    color: color
 });
 
 class FileError extends Error {
@@ -268,6 +283,7 @@ var index = {
     global,
 };
 
+exports.color = color;
 exports["default"] = index;
 exports.each = each;
 exports.fetch = fetch;

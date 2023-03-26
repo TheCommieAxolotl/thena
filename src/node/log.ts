@@ -39,3 +39,19 @@ export const log = (message: string, ...colors: string[]): void => {
             ASCII.reset
     );
 };
+
+export const color = (message: string, ...colors: string[]): string => {
+    return (
+        colors
+            .map((color) => {
+                if (color.toLowerCase() in ASCII) {
+                    return ASCII[color.toLowerCase()];
+                } else {
+                    return color;
+                }
+            })
+            .join('') +
+        message +
+        ASCII.reset
+    );
+};

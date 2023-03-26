@@ -148,11 +148,26 @@ const log = (message, ...colors) => {
         message +
         ASCII.reset);
 };
+const color = (message, ...colors) => {
+    return (colors
+        .map((color) => {
+        if (color.toLowerCase() in ASCII) {
+            return ASCII[color.toLowerCase()];
+        }
+        else {
+            return color;
+        }
+    })
+        .join('') +
+        message +
+        ASCII.reset);
+};
 
 var log$1 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ASCII () { return ASCII; },
-    log: log
+    log: log,
+    color: color
 });
 
 class FileError extends Error {
@@ -260,4 +275,4 @@ var index = {
     global,
 };
 
-export { ASCII, index as default, each, fetch, global, json, log, loop, num, set, stream, watch };
+export { ASCII, color, index as default, each, fetch, global, json, log, loop, num, set, stream, watch };
