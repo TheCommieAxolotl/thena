@@ -14,7 +14,7 @@ export function loop(n: number, fn: (i: number) => void): Promise<void>;
  * @param fn callback function to be run on each iteration
  * @returns promise that resolves when loop is complete
  */
-export function each(arr: any[], fn: (item: any, i: number) => void): Promise<void>;
+export function each<T>(arr: T[], fn: (item: T, i: number) => void): Promise<void>;
 
 /**
  * num
@@ -46,7 +46,21 @@ export function fetch(
         headers?: any;
         body?: any;
     }
-): Promise<any>;
+): Promise<{
+    bodyUsed: boolean;
+    headers: Headers;
+    ok: boolean;
+    redirected: boolean;
+    status: number;
+    statusText: string;
+    type: string;
+    url: string;
+    body: {
+        text: () => string;
+        json: () => any;
+        html: () => Document;
+    };
+}>;
 
 /**
  * h

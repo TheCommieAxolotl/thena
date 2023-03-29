@@ -23,7 +23,7 @@ export function json(
  * @param value value to set
  * @param encoding encoding to use when reading/writing to the file
  */
-export function set(file: string, key: string | symbol, value: any, encoding?: BufferEncoding): void;
+export function set(file: string, key: string | symbol, value: any, encoding?: BufferEncoding);
 
 /**
  * stream
@@ -61,7 +61,7 @@ export function stream(
  *    console.log(`File ${file}: ${eventType}`); // File file.json: change
  * });
  */
-export function watch(file: string, callback: (file: string, eventType: any) => void): void;
+export function watch(file: string, callback: (file: string, eventType: any) => void);
 
 export interface ASCII {
     reset: '\x1b[0m';
@@ -97,7 +97,7 @@ export interface ASCII {
  * @example
  * log('Hello World', 'bold', 'red');
  */
-export function log(message: any, ...colours: string[]): void;
+export function log(message: any, ...colours: string[]);
 
 /**
  * color
