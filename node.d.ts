@@ -1,4 +1,4 @@
-import { each, loop, num } from '.';
+import * as index from '.';
 
 export * from '.';
 
@@ -145,12 +145,14 @@ export interface global {
 }
 
 declare const _default: {
+    loop: typeof index.loop;
+    each: typeof index.each;
+    num: typeof index.num;
+
+    watch: typeof watch;
     json: typeof json;
     set: typeof set;
     stream: typeof stream;
-    loop: typeof loop;
-    each: typeof each;
-    num: typeof num;
     log: typeof log;
     color: typeof color;
     ASCII: ASCII;

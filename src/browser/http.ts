@@ -8,7 +8,7 @@ interface IFetchOptions {
 
 export const fetch = async (url: string, options: IFetchOptions = {}): Promise<any> => {
     if (isNode()) {
-        throw new Error('fetch is only supported in a browser environment');
+        throw new Error('`fetch` is only supported in a browser environment');
     }
 
     const response = await window.fetch(url, {
