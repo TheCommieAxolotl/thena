@@ -118,7 +118,7 @@ var dom = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * thena@0.0.9
+ * thena@0.0.10
  * A browser-safe, simple, lightweight, and fast utility library for JavaScript
  */
 var index = {

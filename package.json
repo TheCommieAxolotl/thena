@@ -1,6 +1,6 @@
 {
     "name": "thena",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "types": "index.d.ts",
     "description": "A simple, lightweight, and fast utility library for Node and the browser.",
     "type": "module",
