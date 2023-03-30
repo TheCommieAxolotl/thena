@@ -1,0 +1,17 @@
+<svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="96" height="40" rx="20" fill="#000"/>
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#fff" font-family="Inter" font-size="14" font-weight="bold">Downloads</text>
+<script>
+(async () => {
+const res = await fetch(`https://api.npmjs.org/downloads/point/2022-01-01:${new Date().toISOString().split('T')[0]}/thena`);
+
+const {downloads} = await res.json();
+
+document.querySelector('text').textContent = `${downloads} Downloads`;
+
+document.querySelector('svg').setAttribute('width', `${document.querySelector('text').getBBox().width + 24}`);
+document.querySelector('svg').setAttribute('viewBox', `0 0 ${document.querySelector('text').getBBox().width + 24} 40`);
+document.querySelector('rect').setAttribute('width', `${document.querySelector('text').getBBox().width + 24}`);
+})();
+</script>
+</svg>
